@@ -1,4 +1,4 @@
-# built-ts-with-gulp
+# build-ts-with-gulp
 Automate TypeScript build process by using gulp
 
 This quick start guide will teach you how to build TypeScript with gulp and then add Browserify, terser, or Watchify to the gulp pipeline. This guide also shows how to add Babel functionality using Babelify.
