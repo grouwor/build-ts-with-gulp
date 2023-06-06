@@ -1,0 +1,25 @@
+{
+  "name": "build-ts-with-gulp",
+  "version": "1.0.0",
+  "description": "Initial project for live-compiling and building typescript files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "build-ts-with-gulp"
+  },
+  "keywords": [
+    "live",
+    "typescript",
+    "compile",
+    "change",
+    "reload",
+    "javascript",
+    "ts",
+    "js"
+  ],
+  "author": "Robin Weber",
+  "license": "MIT"
+}
