@@ -1,5 +1,7 @@
 var gulp = require('gulp');
 var browserify = require('browserify');
+var watchify = require('watchify');
+var fancyLog = require('fancy-log');
 var source = require('vinyl-source-stream');
 var tsify = require('tsify');
 var paths = {
@@ -10,16 +12,20 @@ function copyHTML() {
     return gulp.src(paths.pages).pipe(gulp.dest('dist'));
 }
 
-function browserifyWithTS() {
-    return browserify({
-        basedir: '.',
-        debug: true,
-        entries: ['src/main.ts'],
-    })
-        .plugin(tsify)
+var watchifiedBrowserifyTS = watchify(browserify({
+    basedir: '.',
+    debug: true,
+    entries: ['src/main.ts'],
+}).plugin(tsify));
+
+function bundle() {
+    return watchifiedBrowserifyTS
         .bundle()
-        .pipe(source('bundle.js'))
-        .pipe(gulp.dest('dist'));
+        .on("error", fancyLog)
+        .pipe(source("bundle.js"))
+        .pipe(gulp.dest("dist"));
 }
 
-exports.default = gulp.parallel(copyHTML, browserifyWithTS);
+watchifiedBrowserifyTS.on('update', bundle);
+watchifiedBrowserifyTS.on('log', fancyLog);
+exports.default = gulp.parallel(copyHTML, bundle);
