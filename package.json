@@ -21,5 +21,10 @@
     "js"
   ],
   "author": "Robin Weber",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "typescript": "^5.1.3"
+  }
 }
